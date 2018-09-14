@@ -49,6 +49,17 @@ void drawRect(context *ctx, v2 *pos, int r, int g, int b)
     SDL_RenderFillRect(ctx->renderer, &rect);
 }
 
+void drawSnake(context *ctx)
+{
+    // Use a different color for the snake's head
+    drawRect(ctx, &ctx->state->snake[0], 0, 125, 0);
+
+    for (int i = 1; i < ctx->state->snake.size(); i++)
+    {
+        drawRect(ctx, &ctx->state->snake[i], 0, 255, 0);
+    }
+}
+
 void draw(context *ctx)
 {
     if (ctx->state->snake.size() == 0)
@@ -64,12 +75,7 @@ void draw(context *ctx)
 
     // Draw apple
     drawRect(ctx, &ctx->state->apple, 255, 0, 0);
-
-    // Draw snake
-    for (int i = 0; i < ctx->state->snake.size(); i++)
-    {
-        drawRect(ctx, &ctx->state->snake[i], 0, 255, 0);
-    }
+    drawSnake(ctx);
 
     SDL_RenderPresent(ctx->renderer);
 }
@@ -79,6 +85,7 @@ void mainloop(void *arg)
     context *ctx = static_cast<context *>(arg);
 
     input(ctx);
+    // Game logic
     update(ctx->state);
     draw(ctx);
 }

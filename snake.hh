@@ -14,10 +14,6 @@ struct v2
 
 struct State
 {
-    int cols;
-    int rows;
-    v2 position;
-    v2 direction;
     std::deque<v2> moves;
     std::deque<v2> snake;
     v2 apple;

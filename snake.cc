@@ -6,7 +6,7 @@
 
 State initialState()
 {
-    State s = {10, 10, v2(4, 4), EAST, std::deque<v2>(), std::deque<v2>(), v2(2, 2)};
+    State s = {std::deque<v2>(), std::deque<v2>(), v2(2, 2)};
 
     s.snake.push_front(v2(5, 5));
     s.moves.push_back(EAST);
@@ -93,10 +93,10 @@ void update(State *state)
 
 const int x(State *state, int c)
 {
-    return (c % COLS) * CANVAS_WIDTH / state->cols;
+    return (c % COLS) * CANVAS_WIDTH / COLS;
 }
 
 const int y(State *state, int c)
 {
-    return (c % ROWS) * CANVAS_HEIGHT / state->rows;
+    return (c % ROWS) * CANVAS_HEIGHT / ROWS;
 }

@@ -7,9 +7,9 @@ int rnd(int min, int max)
     return rand() % max + min;
 }
 
+// Special mod function to handle negative numbers
 int mod(int y, int x)
 {
-    // Special mod function to handle negative numbers
     return (x + (y % x)) % x;
 }
 
